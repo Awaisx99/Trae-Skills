@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Scroll-Reveal Image Effect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .scroll-image-section {
+            position: relative;
+            min-height: 150vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0f0f0f;
+            overflow: hidden;
+        }
+
+        .scroll-text {
+            color: white;
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 800;
+            text-align: center;
+            z-index: 1;
+            line-height: 1;
+        }
+
+        .scroll-image-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .scroll-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .other-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a2463 0%, #1e3a8a 100%);
+            color: white;
+            text-align: center;
+        }
+    </style>
+    <!-- GSAP Core -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+    <!-- ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Scroll-Reveal Section -->
+    <section class="scroll-image-section">
+        <h1 class="scroll-text">
+            A GLOBAL<br>COMMUNICATIONS<br>& PR AGENCY FOR<br>LIFESTYLE BRANDS
+        </h1>
+        <div class="scroll-image-container">
+            <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=400&h=300&fit=crop" alt="Hero Image" class="scroll-image">
+        </div>
+    </section>
+
+    <!-- Other Section -->
+    <section class="other-section">
+        <h1>Other Content Section</h1>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            window.addEventListener("load", function() {
+                gsap.registerPlugin(ScrollTrigger);
+                
+                // Sundae Creative style scroll-reveal image
+                gsap.fromTo(".scroll-image-container", 
+                    { scale: 1.2, y: -50, opacity: 1 },
+                    { 
+                        scale: 1, 
+                        y: 100, 
+                        opacity: 1, 
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: ".scroll-image-section",
+                            start: "top top",
+                            end: "bottom top",
+                            scrub: 1, // Smooth animation that follows scroll position
+                            markers: false // Set to true for debugging
+                        }
+                    }
+                );
+                
+                // Optional: Parallax text to match
+                gsap.fromTo(".scroll-text",
+                    { opacity: 0.8 },
+                    {
+                        opacity: 1,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: ".scroll-image-section",
+                            start: "top top",
+                            end: "bottom top",
+                            scrub: 1
+                        }
+                    }
+                );
+            });
+        });
+    </script>
+</body>
+</html>

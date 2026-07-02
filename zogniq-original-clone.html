@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZogniQ - Precision Redefined Light Therapy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navbar */
+        nav {
+            background: #fff;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-weight: bold;
+            color: #0a2463;
+            font-size: 1.5rem;
+        }
+
+        nav button {
+            background: #0a2463;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0a2463 0%, #1e3a8a 100%);
+            color: #fff;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-image {
+            margin-top: 2rem;
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Section 2 */
+        .section-2 {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .section-2 h2 {
+            color: #0a2463;
+            margin-bottom: 1rem;
+        }
+
+        .section-2 img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Section 3 */
+        .section-3 {
+            background: #f8fafc;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .section-3 h2 {
+            color: #0a2463;
+            margin-bottom: 2rem;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+        }
+
+        .benefit-card h3 {
+            color: #0a2463;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Section 4 */
+        .section-4 {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .section-4 h2 {
+            color: #0a2463;
+            margin-bottom: 1rem;
+        }
+
+        .section-4 button {
+            background: #0a2463;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .section-4-image {
+            margin-top: 2rem;
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Section 5 */
+        .section-5 {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .section-5 h2 {
+            color: #0a2463;
+            margin-bottom: 1rem;
+        }
+
+        .section-5 img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Section 6 */
+        .section-6 {
+            background: linear-gradient(135deg, #0a2463 0%, #1e3a8a 100%);
+            color: #fff;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-6 img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .section-6 h2 {
+            margin-bottom: 1rem;
+        }
+
+        .section-6 button {
+            background: #fff;
+            color: #0a2463;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #0a2463 0%, #1e3a8a 100%);
+            color: #fff;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-content {
+            background: #fff;
+            color: #0a2463;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-form {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .cta-form input, .cta-form textarea {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .cta-form button {
+            background: #0a2463;
+            color: #fff;
+            border: none;
+            padding: 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a2463;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section-2, .section-5, .section-6 {
+                grid-template-columns: 1fr;
+            }
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">ZogniQ</div>
+        <button>Book Demo</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Precision Redefined Light<br>Personalized Wellness</h1>
+        <img src="https://images.unsplash.com/photo-1559757127-10f4e1b1b1d2?w=1000&h=500&fit=crop" alt="Hero" class="hero-image">
+    </section>
+
+    <!-- Section 2 -->
+    <section class="section-2">
+        <div>
+            <h2>What is ZogniQ™?<br>Understanding The Technology</h2>
+            <p>ZogniQ™ represents a breakthrough in light therapy technology, delivering precise, targeted wavelengths to promote cellular repair and rejuvenation. Our system combines advanced optics with personalized treatment protocols for optimal results.</p>
+            <p style="margin-top: 1rem;">Backed by years of research and clinical studies, ZogniQ™ offers a non-invasive, safe approach to wellness that fits seamlessly into your lifestyle.</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1559757127-10f4e1b1b1d2?w=400&h=600&fit=crop" alt="ZogniQ Device">
+    </section>
+
+    <!-- Section 3 -->
+    <section class="section-3">
+        <h2>Key Wellness Benefits</h2>
+        <div class="benefits">
+            <div class="benefit-card">
+                <h3>Optimized Light Delivery</h3>
+                <p>Precision-engineered optics ensure maximum absorption at the cellular level</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Accelerated Recovery</h3>
+                <p>Promotes faster tissue repair and reduces recovery time</p>
+            </div>
+            <div class="benefit-card">
+                <h3>Enhanced Skin Health</h3>
+                <p>Improves complexion, reduces fine lines, and supports collagen production</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="section-4">
+        <h2>The Revolutionary Advancements of ZogniQ™ IPL</h2>
+        <p>Our next-generation Intense Pulsed Light (IPL) technology delivers controlled energy pulses that penetrate deeply without damaging surrounding tissue.</p>
+        <button>Learn More</button>
+        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=400&fit=crop" alt="Light Therapy" class="section-4-image">
+    </section>
+
+    <!-- Section 5 -->
+    <section class="section-5">
+        <img src="https://images.unsplash.com/photo-1559757127-10f4e1b1b1d2?w=400&h=600&fit=crop" alt="ZogniQ Device 2">
+        <div>
+            <h2>Why Choose ZogniQ™?</h2>
+            <p><strong>FDA-Registered Technology</strong>: Meets the highest safety standards</p>
+            <p><strong>Personalized Protocols</strong>: Treatments tailored to your unique needs</p>
+            <p><strong>Comprehensive Support</strong>: From setup to ongoing care</p>
+            <p><strong>Proven Results</strong>: Backed by clinical studies and testimonials</p>
+        </div>
+    </section>
+
+    <!-- Section 6 -->
+    <section class="section-6">
+        <img src="https://images.unsplash.com/photo-1559757127-10f4e1b1b1d2?w=400&h=600&fit=crop" alt="ZogniQ Device 3">
+        <div>
+            <h2>Join the Polarized<br>Light Innovation Movement</h2>
+            <p>Be part of the wellness revolution. Book your free demo today and experience ZogniQ™ for yourself!</p>
+            <button>Book Demo</button>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Ready to Experience ZogniQ™?</h2>
+            <p>Fill out the form below and our team will get in touch soon</p>
+            <form class="cta-form">
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="Email Address">
+                <input type="tel" placeholder="Phone Number">
+                <textarea placeholder="Message"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="logo">ZogniQ</div>
+        <p>&copy; 2024 ZogniQ. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

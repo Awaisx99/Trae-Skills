@@ -365,8 +365,81 @@ window.addEventListener("mousemove", (e) => {
 
 ---
 
-## Expected Output
+## Expected Outcome
 Professional, smooth, performant animations that enhance user experience without hurting performance!
+
+---
+
+## Extras: Elementor Scroll-Reveal Image Effect
+Recreate the "image on text that scales and moves down/up with scroll" effect from https://sundaecreative.com/. Perfect for Elementor!
+
+### Step 1: HTML Structure
+```html
+<!-- Use this structure in Elementor HTML widget or custom section -->
+<section class="scroll-image-section" style="position: relative; min-height: 150vh; display: flex; align-items: center; justify-content: center; background: #0f0f0f;">
+  <h1 class="scroll-text" style="color: white; font-size: clamp(3rem, 10vw, 8rem); font-weight: 800; text-align: center; z-index: 1;">
+    A GLOBAL<br>COMMUNICATIONS<br>& PR AGENCY FOR<br>LIFESTYLE BRANDS
+  </h1>
+  <div class="scroll-image-container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
+    <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=400&h=300&fit=crop" alt="Hero Image" class="scroll-image" style="width: 100%; max-width: 400px;">
+  </div>
+</section>
+```
+
+### Step 2: JavaScript (GSAP + ScrollTrigger)
+Add to your theme's `animations.js` file or Elementor HTML widget:
+```javascript
+document.addEventListener("DOMContentLoaded", function() {
+  window.addEventListener("load", function() {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Sundae Creative style scroll-reveal image
+    gsap.fromTo(".scroll-image-container", 
+      { scale: 1.2, y: -50, opacity: 1 },
+      { 
+        scale: 1, 
+        y: 100, 
+        opacity: 1, 
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".scroll-image-section",
+          start: "top top",
+          end: "bottom top",
+          scrub: 1 // Smooth animation that follows scroll position
+        }
+      }
+    );
+    
+    // Optional: Parallax text to match
+    gsap.fromTo(".scroll-text",
+      { opacity: 0.8 },
+      {
+        opacity: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".scroll-image-section",
+          start: "top top",
+          end: "bottom top",
+          scrub: 1
+        }
+      }
+    );
+  });
+});
+```
+
+### Step 3: Elementor Usage Instructions
+1. In Elementor, add a **Section** → Set min-height to 150vh → Background to dark color
+2. Add a **Heading** widget → Add custom CSS class `scroll-text` → Style as needed
+3. Add a **HTML** widget → Use the HTML structure above, replace image URL
+4. Go to **Elementor → Custom Code** or your child theme's functions.php to enqueue GSAP (see WordPress Integration section of this skill)
+5. Paste the JavaScript above in your `animations.js` file or in an Elementor HTML widget (wrap in `<script>` tags)
+
+### Customization Options
+- Change `min-height: 150vh` to make the scroll distance longer/shorter
+- Adjust `scale: 1.2` and `y` values for different movement/scale
+- Modify `scrub: 1` to change smoothness (higher = smoother)
+- Change `ease: "power2.out"` to use different easing functions
 
 ---
 
