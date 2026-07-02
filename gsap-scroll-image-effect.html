@@ -17,7 +17,8 @@
 
         .scroll-container {
             position: relative;
-            height: 200vh;
+            height: 300vh;
+            padding: 100vh 0;
         }
 
         .hero-section {
@@ -126,9 +127,9 @@
                 borderRadius: '0px',
                 ease: 'none',
                 scrollTrigger: {
-                    trigger: '.scroll-container',
-                    start: 'top top',
-                    end: 'bottom top',
+                    trigger: imageWrap,
+                    start: 'center center',
+                    end: 'bottom center',
                     scrub: 1
                 }
             });

@@ -376,7 +376,7 @@ Recreate the perfect "image-on-text" scroll effect from https://sundaecreative.c
 ### Step 1: HTML Structure
 ```html
 <!-- Use this structure in Elementor or custom theme -->
-<div class="scroll-container" style="position: relative; height: 200vh;">
+<div class="scroll-container" style="position: relative; height: 300vh; padding: 100vh 0;">
   <section class="hero-section" style="position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; background: #1a1a1a; overflow: hidden;">
     <div class="hero-nav-top" style="position: absolute; top: 2rem; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 4rem; color: rgba(255,255,255,0.7); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 500;">
       <span>Menu</span>
@@ -414,9 +414,9 @@ document.addEventListener('DOMContentLoaded', function() {
     borderRadius: '0px',
     ease: 'none',
     scrollTrigger: {
-      trigger: '.scroll-container',
-      start: 'top top',
-      end: 'bottom top',
+      trigger: imageWrap,
+      start: 'center center',
+      end: 'bottom center',
       scrub: 1
     }
   });
@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ### Step 3: Elementor Usage Instructions
 1. In Elementor, create this structure with sections/widgets:
-2. Use **Outer Section** → Add custom class `scroll-container` → Set height to 200vh
+2. Use **Outer Section** → Add custom class `scroll-container` → Set height to 300vh → Add padding 100vh top/bottom
 3. **Inner Section** (inside outer) → Add custom class `hero-section` → Set height to 100vh → Dark background
 4. Add **Heading Widgets** for nav top/heading/nav bottom as in HTML above
 5. Add **HTML Widget** for image container with custom class `hero-image-wrap`
@@ -433,7 +433,7 @@ document.addEventListener('DOMContentLoaded', function() {
 7. Paste the JavaScript in `animations.js` file or in an Elementor HTML widget (wrap in `<script>` tags)
 
 ### Customization Options
-- Change `height: 200vh` on `.scroll-container` to adjust scroll distance
+- Change `height: 300vh` on `.scroll-container` to adjust scroll distance
 - Adjust the image starting width (`width: 30%;` for larger/smaller
 - Tweak `y: () => window.innerHeight / 2 + (window.innerHeight * 0.45)` to change how far down the image travels
 - Modify `scrub: 1` to change smoothness (higher = smoother)
