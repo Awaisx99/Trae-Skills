@@ -15,108 +15,124 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
-        .scroll-image-section {
+        .scroll-container {
             position: relative;
-            min-height: 150vh;
+            height: 200vh;
+        }
+
+        .hero-section {
+            position: sticky;
+            top: 0;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #0f0f0f;
+            background: #1a1a1a;
             overflow: hidden;
         }
 
-        .scroll-text {
-            color: white;
-            font-size: clamp(3rem, 10vw, 8rem);
-            font-weight: 800;
-            text-align: center;
-            z-index: 1;
-            line-height: 1;
+        .hero-nav-top {
+            position: absolute;
+            top: 2rem;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 4rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
         }
 
-        .scroll-image-container {
+        .hero-heading {
+            color: white;
+            font-size: clamp(3rem, 12vw, 12rem);
+            font-weight: 900;
+            text-align: center;
+            line-height: 0.9;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero-nav-bottom {
+            position: absolute;
+            bottom: 2rem;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 4rem;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+        }
+
+        .hero-image-wrap {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 2;
+            width: 30%;
+            min-width: 300px;
         }
 
-        .scroll-image {
+        .hero-image {
             width: 100%;
-            max-width: 400px;
-            border-radius: 8px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        .other-section {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #0a2463 0%, #1e3a8a 100%);
-            color: white;
-            text-align: center;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.5);
         }
     </style>
-    <!-- GSAP Core -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
-    <!-- ScrollTrigger -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <!-- Scroll-Reveal Section -->
-    <section class="scroll-image-section">
-        <h1 class="scroll-text">
-            A GLOBAL<br>COMMUNICATIONS<br>& PR AGENCY FOR<br>LIFESTYLE BRANDS
-        </h1>
-        <div class="scroll-image-container">
-            <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=400&h=300&fit=crop" alt="Hero Image" class="scroll-image">
-        </div>
-    </section>
-
-    <!-- Other Section -->
-    <section class="other-section">
-        <h1>Other Content Section</h1>
-    </section>
+    <div class="scroll-container">
+        <section class="hero-section">
+            <div class="hero-nav-top">
+                <span>Menu</span>
+                <span>sundaecreative</span>
+                <span>Let's Talk</span>
+            </div>
+            <h1 class="hero-heading">
+                A GLOBAL<br>
+                COMMUNICATIONS<br>
+                & PR AGENCY FOR<br>
+                LIFESTYLE BRANDS
+            </h1>
+            <div class="hero-nav-bottom">
+                <span>WE STRATEGICALLY<br>COMMUNICATE</span>
+                <span>WITH AUDIENCES</span>
+            </div>
+            <div class="hero-image-wrap">
+                <img class="hero-image" src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=800&h=600&fit=crop" alt="Hero">
+            </div>
+        </section>
+    </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            window.addEventListener("load", function() {
-                gsap.registerPlugin(ScrollTrigger);
-                
-                // Sundae Creative style scroll-reveal image
-                gsap.fromTo(".scroll-image-container", 
-                    { scale: 1.2, y: -50, opacity: 1 },
-                    { 
-                        scale: 1, 
-                        y: 100, 
-                        opacity: 1, 
-                        ease: "power2.out",
-                        scrollTrigger: {
-                            trigger: ".scroll-image-section",
-                            start: "top top",
-                            end: "bottom top",
-                            scrub: 1, // Smooth animation that follows scroll position
-                            markers: false // Set to true for debugging
-                        }
-                    }
-                );
-                
-                // Optional: Parallax text to match
-                gsap.fromTo(".scroll-text",
-                    { opacity: 0.8 },
-                    {
-                        opacity: 1,
-                        ease: "power2.out",
-                        scrollTrigger: {
-                            trigger: ".scroll-image-section",
-                            start: "top top",
-                            end: "bottom top",
-                            scrub: 1
-                        }
-                    }
-                );
+        document.addEventListener('DOMContentLoaded', function() {
+            gsap.registerPlugin(ScrollTrigger);
+            
+            const imageWrap = document.querySelector('.hero-image-wrap');
+            
+            gsap.to(imageWrap, {
+                width: '100vw',
+                y: () => window.innerHeight / 2 + (window.innerHeight * 0.45),
+                borderRadius: '0px',
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.scroll-container',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: 1,
+                    pin: '.hero-section'
+                }
             });
         });
     </script>

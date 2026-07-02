@@ -370,76 +370,74 @@ Professional, smooth, performant animations that enhance user experience without
 
 ---
 
-## Extras: Elementor Scroll-Reveal Image Effect
-Recreate the "image on text that scales and moves down/up with scroll" effect from https://sundaecreative.com/. Perfect for Elementor!
+## Extras: Elementor Scroll-Reveal Image Effect (Sundae Creative Style)
+Recreate the perfect "image-on-text" scroll effect from https://sundaecreative.com/! The image starts centered on the text, scales to full viewport width, and moves down below the text as you scroll!
 
 ### Step 1: HTML Structure
 ```html
-<!-- Use this structure in Elementor HTML widget or custom section -->
-<section class="scroll-image-section" style="position: relative; min-height: 150vh; display: flex; align-items: center; justify-content: center; background: #0f0f0f;">
-  <h1 class="scroll-text" style="color: white; font-size: clamp(3rem, 10vw, 8rem); font-weight: 800; text-align: center; z-index: 1;">
-    A GLOBAL<br>COMMUNICATIONS<br>& PR AGENCY FOR<br>LIFESTYLE BRANDS
-  </h1>
-  <div class="scroll-image-container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
-    <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=400&h=300&fit=crop" alt="Hero Image" class="scroll-image" style="width: 100%; max-width: 400px;">
-  </div>
-</section>
+<!-- Use this structure in Elementor or custom theme -->
+<div class="scroll-container" style="position: relative; height: 200vh;">
+  <section class="hero-section" style="position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; background: #1a1a1a; overflow: hidden;">
+    <div class="hero-nav-top" style="position: absolute; top: 2rem; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 4rem; color: rgba(255,255,255,0.7); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 500;">
+      <span>Menu</span>
+      <span>sundaecreative</span>
+      <span>Let's Talk</span>
+    </div>
+    <h1 class="hero-heading" style="color: white; font-size: clamp(3rem, 12vw, 12rem); font-weight: 900; text-align: center; line-height: 0.9; z-index: 1; position: relative;">
+      A GLOBAL<br>
+      COMMUNICATIONS<br>
+      & PR AGENCY FOR<br>
+      LIFESTYLE BRANDS
+    </h1>
+    <div class="hero-nav-bottom" style="position: absolute; bottom: 2rem; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 4rem; color: rgba(255,255,255,0.6); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500;">
+      <span>WE STRATEGICALLY<br>COMMUNICATE</span>
+      <span>WITH AUDIENCES</span>
+    </div>
+    <div class="hero-image-wrap" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; width: 30%; min-width: 300px;">
+      <img class="hero-image" src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=800&h=600&fit=crop" alt="Hero" style="width: 100%; display: block; border-radius: 12px; box-shadow: 0 30px 60px -15px rgba(0,0,0,0.5);">
+    </div>
+  </section>
+</div>
 ```
 
 ### Step 2: JavaScript (GSAP + ScrollTrigger)
 Add to your theme's `animations.js` file or Elementor HTML widget:
 ```javascript
-document.addEventListener("DOMContentLoaded", function() {
-  window.addEventListener("load", function() {
-    gsap.registerPlugin(ScrollTrigger);
-    
-    // Sundae Creative style scroll-reveal image
-    gsap.fromTo(".scroll-image-container", 
-      { scale: 1.2, y: -50, opacity: 1 },
-      { 
-        scale: 1, 
-        y: 100, 
-        opacity: 1, 
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".scroll-image-section",
-          start: "top top",
-          end: "bottom top",
-          scrub: 1 // Smooth animation that follows scroll position
-        }
-      }
-    );
-    
-    // Optional: Parallax text to match
-    gsap.fromTo(".scroll-text",
-      { opacity: 0.8 },
-      {
-        opacity: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".scroll-image-section",
-          start: "top top",
-          end: "bottom top",
-          scrub: 1
-        }
-      }
-    );
+document.addEventListener('DOMContentLoaded', function() {
+  gsap.registerPlugin(ScrollTrigger);
+  
+  const imageWrap = document.querySelector('.hero-image-wrap');
+  
+  gsap.to(imageWrap, {
+    width: '100vw',
+    y: () => window.innerHeight / 2 + (window.innerHeight * 0.45),
+    borderRadius: '0px',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.scroll-container',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 1,
+      pin: '.hero-section'
+    }
   });
 });
 ```
 
 ### Step 3: Elementor Usage Instructions
-1. In Elementor, add a **Section** → Set min-height to 150vh → Background to dark color
-2. Add a **Heading** widget → Add custom CSS class `scroll-text` → Style as needed
-3. Add a **HTML** widget → Use the HTML structure above, replace image URL
-4. Go to **Elementor → Custom Code** or your child theme's functions.php to enqueue GSAP (see WordPress Integration section of this skill)
-5. Paste the JavaScript above in your `animations.js` file or in an Elementor HTML widget (wrap in `<script>` tags)
+1. In Elementor, create this structure with sections/widgets:
+2. Use **Outer Section** → Add custom class `scroll-container` → Set height to 200vh
+3. **Inner Section** (inside outer) → Add custom class `hero-section` → Sticky top:0 → Set height to 100vh → Dark background
+4. Add **Heading Widgets** for nav top/heading/nav bottom as in HTML above
+5. Add **HTML Widget** for image container with custom class `hero-image-wrap`
+6. Go to **Elementor → Custom Code** or your child theme's functions.php to enqueue GSAP (see WordPress Integration section)
+7. Paste the JavaScript in `animations.js` file or in an Elementor HTML widget (wrap in `<script>` tags)
 
 ### Customization Options
-- Change `min-height: 150vh` to make the scroll distance longer/shorter
-- Adjust `scale: 1.2` and `y` values for different movement/scale
+- Change `height: 200vh` on `.scroll-container` to adjust scroll distance
+- Adjust the image starting width (`width: 30%;` for larger/smaller
+- Tweak `y: () => window.innerHeight / 2 + (window.innerHeight * 0.45)` to change how far down the image travels
 - Modify `scrub: 1` to change smoothness (higher = smoother)
-- Change `ease: "power2.out"` to use different easing functions
 
 ---
 
