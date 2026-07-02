@@ -48,18 +48,23 @@ To create, modify, and refine web designs starting from a screenshot with an ite
 ---
 
 ### Phase 3: Iterative Refinement
-1. **Check User Feedback**:
+1. **Important Definitions**:
+   - **Design Changes**: Modifying the core visual design from the original screenshot (colors, fonts, layout structure)
+   - **Adjustments**: Adding widgets, modifying spacing (margins, padding, gaps), rearranging elements without changing core design, updating content, or making minor tweaks that preserve the original screenshot's look
+   - **Rule**: When user says "do adjustments", ONLY make adjustments - NO design changes
+
+2. **Check User Feedback**:
    - If user **approves** the design: Proceed to make the requested adjustments
    - If user **does NOT approve**: First make the design pixel-perfect and match the screenshot exactly, then proceed to adjustments
 
-2. **Make Adjustments**:
-   - Implement the requested changes precisely
+3. **Make Adjustments**:
+   - Implement ONLY the requested adjustments (no design changes)
    - Test the changes across breakpoints
 
-3. **Deliver Updated Version & Ask for Approval**:
+4. **Deliver Updated Version & Ask for Approval**:
    - Share the revised files
    - Ask user to review and confirm if everything is good
-   - If user is still not satisfied, iterate: improve the design/adjustments based on feedback, and repeat until approval
+   - If user is still not satisfied, iterate: improve the adjustments based on feedback, and repeat until approval
 
 ---
 
