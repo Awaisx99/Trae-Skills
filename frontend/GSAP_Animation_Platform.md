@@ -377,7 +377,7 @@ Recreate the perfect "image-on-text" scroll effect from https://sundaecreative.c
 ```html
 <!-- Use this structure in Elementor or custom theme -->
 <div class="scroll-container" style="position: relative; height: 200vh;">
-  <section class="hero-section" style="position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; background: #1a1a1a; overflow: hidden;">
+  <section class="hero-section" style="position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; background: #1a1a1a; overflow: hidden;">
     <div class="hero-nav-top" style="position: absolute; top: 2rem; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 4rem; color: rgba(255,255,255,0.7); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 500;">
       <span>Menu</span>
       <span>sundaecreative</span>
@@ -417,8 +417,7 @@ document.addEventListener('DOMContentLoaded', function() {
       trigger: '.scroll-container',
       start: 'top top',
       end: 'bottom top',
-      scrub: 1,
-      pin: '.hero-section'
+      scrub: 1
     }
   });
 });
@@ -427,7 +426,7 @@ document.addEventListener('DOMContentLoaded', function() {
 ### Step 3: Elementor Usage Instructions
 1. In Elementor, create this structure with sections/widgets:
 2. Use **Outer Section** → Add custom class `scroll-container` → Set height to 200vh
-3. **Inner Section** (inside outer) → Add custom class `hero-section` → Sticky top:0 → Set height to 100vh → Dark background
+3. **Inner Section** (inside outer) → Add custom class `hero-section` → Set height to 100vh → Dark background
 4. Add **Heading Widgets** for nav top/heading/nav bottom as in HTML above
 5. Add **HTML Widget** for image container with custom class `hero-image-wrap`
 6. Go to **Elementor → Custom Code** or your child theme's functions.php to enqueue GSAP (see WordPress Integration section)
