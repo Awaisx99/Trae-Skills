@@ -1756,5 +1756,19 @@
       "css",
       "design to code"
     ]
+  },
+  {
+    "id": "Screenshot-Based_Design_Workflow",
+    "name": "Screenshot-Based Design Workflow (Iterative, Pixel-Perfect)",
+    "category": "frontend",
+    "tags": [
+      "screenshot",
+      "pixel perfect",
+      "design",
+      "html",
+      "css",
+      "iterative",
+      "workflow"
+    ]
   }
 ]

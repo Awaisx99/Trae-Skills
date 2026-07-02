@@ -367,3 +367,11 @@ window.addEventListener("mousemove", (e) => {
 
 ## Expected Output
 Professional, smooth, performant animations that enhance user experience without hurting performance!
+
+---
+
+## Continuous Learning & Skill Improvement
+**Crucial Note**: For every design, animation, or workflow task:
+1. Document lessons learned after completion
+2. Update relevant skills with new knowledge as an "Extras" or "Crucial Learnings" section
+3. Apply improved approaches to all future similar tasks

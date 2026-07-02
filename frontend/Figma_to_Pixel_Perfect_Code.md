@@ -228,3 +228,16 @@ Always verify your implementation:
 
 ## Expected Output
 A pixel-perfect, responsive website that exactly matches the Figma design in WordPress/Elementor or HTML/CSS!
+
+---
+
+## Iterative Workflow Reference
+For tasks involving screenshots or iterative design adjustments, use the **Screenshot-Based Design Workflow** skill.
+
+---
+
+## Continuous Learning & Skill Improvement
+**Crucial Note**: For every design, animation, or workflow task:
+1. Document lessons learned after completion
+2. Update relevant skills with new knowledge as an "Extras" or "Crucial Learnings" section
+3. Apply improved approaches to all future similar tasks
